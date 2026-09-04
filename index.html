@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Investment Portfolio</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        "Noto Sans KR", Arial, sans-serif;
+      background: #f4f6f8;
+      color: #1f2937;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 30px 0 60px;
+    }
+
+    header {
+      margin-bottom: 25px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      color: #6b7280;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+
+    .label {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 8px;
+    }
+
+    .big-number {
+      font-size: 27px;
+      font-weight: 700;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 20px;
+    }
+
+    .asset {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 0.7fr;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .asset:last-child {
+      border-bottom: none;
+    }
+
+    .asset-name {
+      font-weight: 600;
+    }
+
+    .asset-account {
+      display: block;
+      margin-top: 4px;
+      font-size: 12px;
+      color: #9ca3af;
+    }
+
+    input {
+      width: 100%;
+      border: 1px solid #d1d5db;
+      border-radius: 9px;
+      padding: 10px;
+      font-size: 15px;
+      outline: none;
+      text-align: right;
+    }
+
+    input:focus {
+      border-color: #6b7280;
+    }
+
+    .percentage {
+      text-align: right;
+      font-weight: 600;
+    }
+
+    .chart-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 320px;
+    }
+
+    .donut {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      position: relative;
+      background: conic-gradient(
+        #f59e0b 0% 60%,
+        #3b82f6 60% 70%,
+        #8b5cf6 70% 80%,
+        #10b981 80% 94%,
+        #ef4444 94% 100%
+      );
+    }
+
+    .donut::after {
+      content: "";
+      position: absolute;
+      inset: 42px;
+      background: white;
+      border-radius: 50%;
+    }
+
+    .chart-center {
+      position: absolute;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .donut-container {
+      position: relative;
+    }
+
+    .chart-center small {
+      color: #9ca3af;
+      display: block;
+    }
+
+    .chart-center strong {
+      font-size: 20px;
+    }
+
+    .legend {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    .legend-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin: 9px 0;
+    }
+
+    .legend-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .btc { background: #f59e0b; }
+    .sp500 { background: #3b82f6; }
+    .nasdaq { background: #8b5cf6; }
+    .schd { background: #10b981; }
+    .nike { background: #ef4444; }
+
+    .section-title {
+      font-size: 19px;
+      margin: 0 0 15px;
+    }
+
+    .account-section {
+      margin-top: 20px;
+    }
+
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .account-card h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .account-card p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    .account-card strong {
+      font-size: 20px;
+      display: block;
+      margin-top: 12px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      border: 0;
+      padding: 11px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .save {
+      background: #111827;
+      color: white;
+    }
+
+    .reset {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    .notice {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    @media (max-width: 750px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .account-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .asset {
+        grid-template-columns: 1.3fr 1fr 0.6fr;
+      }
+
+      .container {
+        width: 94%;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>My Investment Portfolio</h1>
+    <p>장기 적립식 투자 대시보드</p>
+  </header>
+
+
+  <section class="summary">
+
+    <div class="card">
+      <div class="label">월 총 투자금</div>
+      <div class="big-number" id="totalMonthly">500,000원</div>
+    </div>
+
+    <div class="card">
+      <div class="label">연금저축 투자금</div>
+      <div class="big-number" id="pensionTotal">100,000원</div>
+    </div>
+
+    <div class="card">
+      <div class="label">가장 높은 비중</div>
+      <div class="big-number" id="largestAsset">Bitcoin 60%</div>
+    </div>
+
+  </section>
+
+
+  <div class="main-grid">
+
+    <section class="card">
+
+      <h2 class="section-title">월 투자 포트폴리오</h2>
+
+      <div class="asset">
+        <div>
+          <span class="asset-name">Bitcoin</span>
+          <span class="asset-account">BTC</span>
+        </div>
+
+        <input
+          id="btc"
+          type="number"
+          value="300000"
+          step="10000"
+          oninput="updatePortfolio()"
+        >
+
+        <div class="percentage" id="btcPercent">60%</div>
+      </div>
+
+
+      <div class="asset">
+        <div>
+          <span class="asset-name">S&P 500</span>
+          <span class="asset-account">연금저축펀드</span>
+        </div>
+
+        <input
+          id="sp500"
+          type="number"
+          value="50000"
+          step="10000"
+          oninput="updatePortfolio()"
+        >
+
+        <div class="percentage" id="sp500Percent">10%</div>
+      </div>
+
+
+      <div class="asset">
+        <div>
+          <span class="asset-name">NASDAQ 100</span>
+          <span class="asset-account">연금저축펀드</span>
+        </div>
+
+        <input
+          id="nasdaq"
+          type="number"
+          value="50000"
+          step="10000"
+          oninput="updatePortfolio()"
+        >
+
+        <div class="percentage" id="nasdaqPercent">10%</div>
+      </div>
+
+
+      <div class="asset">
+        <div>
+          <span class="asset-name">미국배당다우존스</span>
+          <span class="asset-account">ISA · SCHD형</span>
+        </div>
+
+        <input
+          id="schd"
+          type="number"
+          value="70000"
+          step="10000"
+          oninput="updatePortfolio()"
+        >
+
+        <div class="percentage" id="schdPercent">14%</div>
+      </div>
+
+
+      <div class="asset">
+        <div>
+          <span class="asset-name">Nike</span>
+          <span class="asset-account">일반계좌 · NKE</span>
+        </div>
+
+        <input
+          id="nike"
+          type="number"
+          value="30000"
+          step="10000"
+          oninput="updatePortfolio()"
+        >
+
+        <div class="percentage" id="nikePercent">6%</div>
+      </div>
+
+
+      <div class="buttons">
+        <button class="save" onclick="savePortfolio()">
+          저장
+        </button>
+
+        <button class="reset" onclick="resetPortfolio()">
+          기본값 복원
+        </button>
+      </div>
+
+    </section>
+
+
+    <section class="card chart-wrap">
+
+      <h2 class="section-title">자산 비중</h2>
+
+      <div class="donut-container">
+
+        <div class="donut" id="donut"></div>
+
+        <div class="chart-center">
+          <small>월 투자금</small>
+          <strong id="chartTotal">50만원</strong>
+        </div>
+
+      </div>
+
+
+      <div class="legend">
+
+        <div class="legend-row">
+          <span class="legend-name">
+            <span class="dot btc"></span>
+            Bitcoin
+          </span>
+          <span id="legendBtc">60%</span>
+        </div>
+
+        <div class="legend-row">
+          <span class="legend-name">
+            <span class="dot sp500"></span>
+            S&P 500
+          </span>
+          <span id="legendSp500">10%</span>
+        </div>
+
+        <div class="legend-row">
+          <span class="legend-name">
+            <span class="dot nasdaq"></span>
+            NASDAQ 100
+          </span>
+          <span id="legendNasdaq">10%</span>
+        </div>
+
+        <div class="legend-row">
+          <span class="legend-name">
+            <span class="dot schd"></span>
+            미국배당다우존스
+          </span>
+          <span id="legendSchd">14%</span>
+        </div>
+
+        <div class="legend-row">
+          <span class="legend-name">
+            <span class="dot nike"></span>
+            Nike
+          </span>
+          <span id="legendNike">6%</span>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <section class="account-section">
+
+    <h2 class="section-title">계좌별 구성</h2>
+
+    <div class="account-grid">
+
+      <div class="card account-card">
+        <h3>연금저축펀드</h3>
+        <p>S&P 500</p>
+        <p>NASDAQ 100</p>
+        <p>목표 비중 50 : 50</p>
+        <strong id="pensionCard">100,000원 / 월</strong>
+      </div>
+
+      <div class="card account-card">
+        <h3>ISA</h3>
+        <p>미국배당다우존스</p>
+        <p>SCHD형 배당 ETF</p>
+        <p>절세 + 배당</p>
+        <strong id="isaCard">70,000원 / 월</strong>
+      </div>
+
+      <div class="card account-card">
+        <h3>일반계좌</h3>
+        <p>Nike (NKE)</p>
+        <p>개별주 장기투자</p>
+        <p>위성 포지션</p>
+        <strong id="normalCard">30,000원 / 월</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <div class="notice">
+    입력한 값은 현재 브라우저에만 저장됩니다.
+    증권사 로그인 정보나 계좌 비밀번호는 저장하지 마세요.
+  </div>
+
+</div>
+
+
+<script>
+
+  const assetIds = [
+    "btc",
+    "sp500",
+    "nasdaq",
+    "schd",
+    "nike"
+  ];
+
+
+  function money(value) {
+
+    return Number(value).toLocaleString("ko-KR") + "원";
+
+  }
+
+
+  function updatePortfolio() {
+
+    const btc =
+      Number(document.getElementById("btc").value) || 0;
+
+    const sp500 =
+      Number(document.getElementById("sp500").value) || 0;
+
+    const nasdaq =
+      Number(document.getElementById("nasdaq").value) || 0;
+
+    const schd =
+      Number(document.getElementById("schd").value) || 0;
+
+    const nike =
+      Number(document.getElementById("nike").value) || 0;
+
+
+    const total =
+      btc + sp500 + nasdaq + schd + nike;
+
+
+    const values = {
+      btc,
+      sp500,
+      nasdaq,
+      schd,
+      nike
+    };
+
+
+    const percentages = {};
+
+
+    assetIds.forEach(id => {
+
+      percentages[id] =
+        total === 0
+          ? 0
+          : (values[id] / total) * 100;
+
+    });
+
+
+    document.getElementById("totalMonthly").textContent =
+      money(total);
+
+
+    document.getElementById("pensionTotal").textContent =
+      money(sp500 + nasdaq);
+
+
+    document.getElementById("chartTotal").textContent =
+      (total / 10000).toFixed(0) + "만원";
+
+
+    document.getElementById("pensionCard").textContent =
+      money(sp500 + nasdaq) + " / 월";
+
+
+    document.getElementById("isaCard").textContent =
+      money(schd) + " / 월";
+
+
+    document.getElementById("normalCard").textContent =
+      money(nike) + " / 월";
+
+
+    assetIds.forEach(id => {
+
+      document.getElementById(id + "Percent").textContent =
+        percentages[id].toFixed(1) + "%";
+
+    });
+
+
+    document.getElementById("legendBtc").textContent =
+      percentages.btc.toFixed(1) + "%";
+
+    document.getElementById("legendSp500").textContent =
+      percentages.sp500.toFixed(1) + "%";
+
+    document.getElementById("legendNasdaq").textContent =
+      percentages.nasdaq.toFixed(1) + "%";
+
+    document.getElementById("legendSchd").textContent =
+      percentages.schd.toFixed(1) + "%";
+
+    document.getElementById("legendNike").textContent =
+      percentages.nike.toFixed(1) + "%";
+
+
+    const btcEnd =
+      percentages.btc;
+
+    const sp500End =
+      btcEnd + percentages.sp500;
+
+    const nasdaqEnd =
+      sp500End + percentages.nasdaq;
+
+    const schdEnd =
+      nasdaqEnd + percentages.schd;
+
+
+    document.getElementById("donut").style.background =
+      `
+      conic-gradient(
+        #f59e0b 0% ${btcEnd}%,
+        #3b82f6 ${btcEnd}% ${sp500End}%,
+        #8b5cf6 ${sp500End}% ${nasdaqEnd}%,
+        #10b981 ${nasdaqEnd}% ${schdEnd}%,
+        #ef4444 ${schdEnd}% 100%
+      )
+      `;
+
+
+    const assetNames = {
+      btc: "Bitcoin",
+      sp500: "S&P 500",
+      nasdaq: "NASDAQ 100",
+      schd: "SCHD",
+      nike: "Nike"
+    };
+
+
+    let largest = "btc";
+
+
+    assetIds.forEach(id => {
+
+      if (
+        percentages[id] >
+        percentages[largest]
+      ) {
+
+        largest = id;
+
+      }
+
+    });
+
+
+    document.getElementById("largestAsset").textContent =
+      assetNames[largest]
+      + " "
+      + percentages[largest].toFixed(1)
+      + "%";
+
+  }
+
+
+
+  function savePortfolio() {
+
+    const portfolio = {};
+
+    assetIds.forEach(id => {
+
+      portfolio[id] =
+        document.getElementById(id).value;
+
+    });
+
+
+    localStorage.setItem(
+      "myInvestmentPortfolio",
+      JSON.stringify(portfolio)
+    );
+
+
+    alert("현재 포트폴리오를 저장했습니다.");
+
+  }
+
+
+
+  function loadPortfolio() {
+
+    const saved =
+      localStorage.getItem(
+        "myInvestmentPortfolio"
+      );
+
+
+    if (saved) {
+
+      const portfolio =
+        JSON.parse(saved);
+
+
+      assetIds.forEach(id => {
+
+        if (portfolio[id] !== undefined) {
+
+          document.getElementById(id).value =
+            portfolio[id];
+
+        }
+
+      });
+
+    }
+
+
+    updatePortfolio();
+
+  }
+
+
+
+  function resetPortfolio() {
+
+    const defaults = {
+
+      btc: 300000,
+      sp500: 50000,
+      nasdaq: 50000,
+      schd: 70000,
+      nike: 30000
+
+    };
+
+
+    assetIds.forEach(id => {
+
+      document.getElementById(id).value =
+        defaults[id];
+
+    });
+
+
+    localStorage.removeItem(
+      "myInvestmentPortfolio"
+    );
+
+
+    updatePortfolio();
+
+  }
+
+
+  loadPortfolio();
+
+</script>
+
+</body>
+</html>
