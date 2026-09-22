@@ -14,7 +14,7 @@
   <link
     rel="icon"
     type="image/png"
-    href="/favicon.png?v=7"
+    href="/favicon.png?v=8"
   >
 
   <style>
@@ -47,7 +47,7 @@
 
 
     header {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
 
@@ -60,26 +60,51 @@
 
     header p {
       margin: 8px 0 0;
-      color: #6b7280;
+
       font-size: 15px;
+
+      color: #6b7280;
     }
 
 
     /* =========================
-       상단 요약
+       큰 섹션
+    ========================= */
+
+    .portfolio-section {
+      margin-bottom: 38px;
+    }
+
+
+    .portfolio-heading {
+      margin: 0 0 15px;
+
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+
+    /* =========================
+       요약 카드
     ========================= */
 
     .summary {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+
+      grid-template-columns:
+        repeat(2, 1fr);
+
       gap: 15px;
+
       margin-bottom: 20px;
     }
 
 
     .card {
       background: white;
+
       border-radius: 16px;
+
       padding: 20px;
 
       box-shadow:
@@ -89,10 +114,12 @@
 
 
     .label {
-      font-size: 14px;
-      color: #6b7280;
       margin-bottom: 8px;
+
+      font-size: 14px;
       font-weight: 500;
+
+      color: #6b7280;
     }
 
 
@@ -103,14 +130,14 @@
 
 
     /* =========================
-       메인
+       입력 + 그래프
     ========================= */
 
     .main-grid {
       display: grid;
 
       grid-template-columns:
-        1.25fr
+        1.35fr
         0.85fr;
 
       gap: 20px;
@@ -118,21 +145,22 @@
 
 
     .section-title {
+      margin: 0 0 15px;
+
       font-size: 19px;
       font-weight: 700;
-      margin: 0 0 15px;
     }
 
 
     /* =========================
-       자산 입력
+       자산 입력 행
     ========================= */
 
     .asset {
       display: grid;
 
       grid-template-columns:
-        1.5fr
+        1.45fr
         1fr
         0.65fr;
 
@@ -143,7 +171,7 @@
       padding: 15px 0;
 
       border-bottom:
-        1px solid #eee;
+        1px solid #eeeeee;
     }
 
 
@@ -172,19 +200,23 @@
     input {
       width: 100%;
 
+      padding: 10px;
+
       border:
         1px solid #d1d5db;
 
       border-radius: 9px;
 
-      padding: 10px;
+      outline: none;
+
+      text-align: right;
 
       font-size: 15px;
       font-weight: 500;
 
-      outline: none;
+      color: #1f2937;
 
-      text-align: right;
+      background: white;
     }
 
 
@@ -215,10 +247,10 @@
 
 
     button {
-      border: 0;
-
       padding:
         11px 18px;
+
+      border: 0;
 
       border-radius: 10px;
 
@@ -242,7 +274,7 @@
 
 
     /* =========================
-       그래프 영역
+       그래프 카드
     ========================= */
 
     .chart-wrap {
@@ -253,8 +285,6 @@
       align-items: center;
 
       justify-content: flex-start;
-
-      min-height: 430px;
     }
 
 
@@ -264,19 +294,19 @@
       width: 250px;
       height: 250px;
 
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
 
     .donut {
+      position: absolute;
+
+      inset: 0;
+
       width: 250px;
       height: 250px;
 
       border-radius: 50%;
-
-      position: absolute;
-
-      inset: 0;
 
       background: #e5e7eb;
     }
@@ -296,7 +326,7 @@
 
 
     /* =========================
-       그래프 중앙
+       그래프 가운데
     ========================= */
 
     .chart-center {
@@ -319,16 +349,17 @@
     .chart-center small {
       display: block;
 
-      color: #9ca3af;
+      margin-bottom: 4px;
 
       font-size: 13px;
+      font-weight: 500;
 
-      margin-bottom: 3px;
+      color: #9ca3af;
     }
 
 
     .chart-center strong {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 700;
 
       white-space: nowrap;
@@ -336,7 +367,7 @@
 
 
     /* =========================
-       그래프 심볼
+       심볼
     ========================= */
 
     .donut-symbol {
@@ -344,32 +375,30 @@
 
       z-index: 6;
 
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
 
-      border-radius: 50%;
-
-      display: flex;
+      display: none;
 
       align-items: center;
       justify-content: center;
+
+      border-radius: 50%;
 
       transform:
         translate(-50%, -50%);
 
       background:
-        rgba(255, 255, 255, 0.92);
+        rgba(255,255,255,0.94);
 
       color: #111827;
 
       box-shadow:
-        0 1px 5px
-        rgba(0, 0, 0, 0.18);
+        0 1px 6px
+        rgba(0,0,0,0.20);
 
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 800;
-
-      letter-spacing: -0.5px;
 
       line-height: 1;
 
@@ -381,28 +410,8 @@
     }
 
 
-    #symbol-btc {
+    .donut-symbol.btc-symbol {
       font-size: 17px;
-    }
-
-
-    #symbol-sp500 {
-      font-size: 9px;
-    }
-
-
-    #symbol-nasdaq {
-      font-size: 10px;
-    }
-
-
-    #symbol-schd {
-      font-size: 8px;
-    }
-
-
-    #symbol-nike {
-      font-size: 9px;
     }
 
 
@@ -412,6 +421,7 @@
 
     .legend {
       width: 100%;
+
       margin-top: 28px;
     }
 
@@ -419,13 +429,13 @@
     .legend-row {
       display: flex;
 
-      justify-content: space-between;
-
       align-items: center;
 
-      font-size: 15px;
+      justify-content: space-between;
 
       margin: 11px 0;
+
+      font-size: 15px;
     }
 
 
@@ -437,10 +447,11 @@
       gap: 8px;
 
       font-size: 15px;
+      font-weight: 500;
     }
 
 
-    .legend-row > span:last-child {
+    .legend-value {
       font-size: 15px;
       font-weight: 600;
     }
@@ -456,43 +467,56 @@
     }
 
 
-    .btc {
+    .btc-dot {
       background: #f59e0b;
     }
 
 
-    .sp500 {
+    .sp500-dot {
       background: #3b82f6;
     }
 
 
-    .nasdaq {
+    .nasdaq-dot {
       background: #8b5cf6;
     }
 
 
-    .schd {
+    .schd-dot {
       background: #10b981;
     }
 
 
-    .nike {
+    .nike-dot {
       background: #ef4444;
     }
 
 
     /* =========================
-       하단 안내
+       구분선
+    ========================= */
+
+    .divider {
+      height: 1px;
+
+      margin: 5px 0 35px;
+
+      background: #e5e7eb;
+    }
+
+
+    /* =========================
+       안내
     ========================= */
 
     .notice {
-      margin-top: 20px;
+      margin-top: 10px;
+
+      text-align: center;
 
       font-size: 12px;
 
       color: #9ca3af;
-
-      text-align: center;
     }
 
 
@@ -502,16 +526,6 @@
 
     @media
     (max-width: 750px) {
-
-      .summary {
-        grid-template-columns: 1fr;
-      }
-
-
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-
 
       .container {
         width: 94%;
@@ -523,28 +537,39 @@
       }
 
 
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+
       .asset {
         grid-template-columns:
           1.25fr
           1fr
-          0.6fr;
+          0.65fr;
+
+        gap: 8px;
       }
 
 
-      .donut-container,
-      .donut {
-        width: 240px;
-        height: 240px;
+      .portfolio-heading {
+        font-size: 20px;
       }
 
 
-      .donut::after {
-        inset: 49px;
+      .big-number {
+        font-size: 24px;
       }
 
     }
 
   </style>
+
 </head>
 
 
@@ -569,41 +594,474 @@
 
 
 
-  <!-- ======================
-       상단 요약
-  ======================= -->
+  <!-- ==================================================
+       월 투자 포트폴리오
+  =================================================== -->
 
-  <section class="summary">
+  <section
+    class="portfolio-section"
+    id="monthlyPortfolio"
+  >
 
 
-    <div class="card">
+    <h2 class="portfolio-heading">
+      월 투자 포트폴리오
+    </h2>
 
-      <div class="label">
-        총 자산
+
+
+    <div class="summary">
+
+
+      <div class="card">
+
+        <div class="label">
+          월 총 투자금
+        </div>
+
+        <div
+          class="big-number total-display"
+        >
+          0원
+        </div>
+
       </div>
 
-      <div
-        class="big-number"
-        id="totalAssets"
-      >
-        0원
+
+
+      <div class="card">
+
+        <div class="label">
+          가장 높은 비중
+        </div>
+
+        <div
+          class="big-number largest-display"
+        >
+          -
+        </div>
+
       </div>
+
 
     </div>
 
 
-    <div class="card">
 
-      <div class="label">
-        가장 높은 비중
-      </div>
+    <div class="main-grid">
 
-      <div
-        class="big-number"
-        id="largestAsset"
-      >
-        -
-      </div>
+
+      <!-- 입력 -->
+
+      <section class="card">
+
+
+        <h3 class="section-title">
+          투자 계획
+        </h3>
+
+
+
+        <div
+          class="asset"
+          data-asset="btc"
+        >
+
+          <div>
+
+            <span class="asset-name">
+              Bitcoin
+            </span>
+
+            <span class="asset-account">
+              BTC
+            </span>
+
+          </div>
+
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="btc"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="btc"
+          >
+            0.0%
+          </div>
+
+        </div>
+
+
+
+        <div
+          class="asset"
+          data-asset="sp500"
+        >
+
+          <div>
+
+            <span class="asset-name">
+              S&P 500
+            </span>
+
+            <span class="asset-account">
+              연금저축펀드
+            </span>
+
+          </div>
+
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="sp500"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="sp500"
+          >
+            0.0%
+          </div>
+
+        </div>
+
+
+
+        <div
+          class="asset"
+          data-asset="nasdaq"
+        >
+
+          <div>
+
+            <span class="asset-name">
+              NASDAQ 100
+            </span>
+
+            <span class="asset-account">
+              연금저축펀드
+            </span>
+
+          </div>
+
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="nasdaq"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="nasdaq"
+          >
+            0.0%
+          </div>
+
+        </div>
+
+
+
+        <div
+          class="asset"
+          data-asset="schd"
+        >
+
+          <div>
+
+            <span class="asset-name">
+              미국배당다우존스
+            </span>
+
+            <span class="asset-account">
+              ISA
+            </span>
+
+          </div>
+
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="schd"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="schd"
+          >
+            0.0%
+          </div>
+
+        </div>
+
+
+
+        <div
+          class="asset"
+          data-asset="nike"
+        >
+
+          <div>
+
+            <span class="asset-name">
+              Nike
+            </span>
+
+            <span class="asset-account">
+              일반계좌 · NKE
+            </span>
+
+          </div>
+
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="nike"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="nike"
+          >
+            0.0%
+          </div>
+
+        </div>
+
+
+
+        <div class="buttons">
+
+          <button
+            class="save"
+            data-action="save"
+          >
+            저장
+          </button>
+
+          <button
+            class="reset"
+            data-action="reset"
+          >
+            0원으로 초기화
+          </button>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- 그래프 -->
+
+      <section class="card chart-wrap">
+
+
+        <h3 class="section-title">
+          투자 비중
+        </h3>
+
+
+
+        <div class="donut-container">
+
+
+          <div class="donut"></div>
+
+
+          <div
+            class="donut-symbol btc-symbol"
+            data-symbol="btc"
+          >
+            ₿
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="sp500"
+          >
+            S&P
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="nasdaq"
+          >
+            NQ
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="schd"
+          >
+            SCHD
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="nike"
+          >
+            NKE
+          </div>
+
+
+
+          <div class="chart-center">
+
+            <small>
+              월 투자금
+            </small>
+
+            <strong class="chart-total">
+              0원
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="legend">
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot btc-dot"></span>
+
+              Bitcoin
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="btc"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot sp500-dot"></span>
+
+              S&P 500
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="sp500"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot nasdaq-dot"></span>
+
+              NASDAQ 100
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="nasdaq"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot schd-dot"></span>
+
+              미국배당다우존스
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="schd"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot nike-dot"></span>
+
+              Nike
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="nike"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
 
     </div>
 
@@ -612,424 +1070,490 @@
 
 
 
-  <div class="main-grid">
-
-
-    <!-- ======================
-         현재 자산 입력
-    ======================= -->
-
-    <section class="card">
-
-
-      <h2 class="section-title">
-        현재 자산 구성
-      </h2>
+  <div class="divider"></div>
 
 
 
-      <!-- Bitcoin -->
+  <!-- ==================================================
+       현재 자산 구성
+  =================================================== -->
 
-      <div class="asset">
+  <section
+    class="portfolio-section"
+    id="currentPortfolio"
+  >
 
-        <div>
 
-          <span class="asset-name">
-            Bitcoin
-          </span>
+    <h2 class="portfolio-heading">
+      현재 자산 구성
+    </h2>
 
-          <span class="asset-account">
-            BTC
-          </span>
 
+
+    <div class="summary">
+
+
+      <div class="card">
+
+        <div class="label">
+          총 자산
         </div>
 
-
-        <input
-          id="btc"
-          type="number"
-          value="0"
-          min="0"
-          step="10000"
-          oninput="updatePortfolio()"
-        >
-
-
         <div
-          class="percentage"
-          id="btcPercent"
+          class="big-number total-display"
         >
-          0.0%
+          0원
         </div>
 
       </div>
 
 
 
-      <!-- S&P 500 -->
+      <div class="card">
 
-      <div class="asset">
-
-        <div>
-
-          <span class="asset-name">
-            S&P 500
-          </span>
-
-          <span class="asset-account">
-            연금저축펀드
-          </span>
-
+        <div class="label">
+          가장 높은 비중
         </div>
 
-
-        <input
-          id="sp500"
-          type="number"
-          value="0"
-          min="0"
-          step="10000"
-          oninput="updatePortfolio()"
-        >
-
-
         <div
-          class="percentage"
-          id="sp500Percent"
+          class="big-number largest-display"
         >
-          0.0%
+          -
         </div>
 
       </div>
 
 
-
-      <!-- NASDAQ -->
-
-      <div class="asset">
-
-        <div>
-
-          <span class="asset-name">
-            NASDAQ 100
-          </span>
-
-          <span class="asset-account">
-            연금저축펀드
-          </span>
-
-        </div>
+    </div>
 
 
-        <input
-          id="nasdaq"
-          type="number"
-          value="0"
-          min="0"
-          step="10000"
-          oninput="updatePortfolio()"
-        >
+
+    <div class="main-grid">
+
+
+      <!-- 현재 자산 입력 -->
+
+      <section class="card">
+
+
+        <h3 class="section-title">
+          보유 자산
+        </h3>
+
 
 
         <div
-          class="percentage"
-          id="nasdaqPercent"
-        >
-          0.0%
-        </div>
-
-      </div>
-
-
-
-      <!-- SCHD -->
-
-      <div class="asset">
-
-        <div>
-
-          <span class="asset-name">
-            미국배당다우존스
-          </span>
-
-          <span class="asset-account">
-            ISA · SCHD형
-          </span>
-
-        </div>
-
-
-        <input
-          id="schd"
-          type="number"
-          value="0"
-          min="0"
-          step="10000"
-          oninput="updatePortfolio()"
+          class="asset"
+          data-asset="btc"
         >
 
+          <div>
 
-        <div
-          class="percentage"
-          id="schdPercent"
-        >
-          0.0%
-        </div>
+            <span class="asset-name">
+              Bitcoin
+            </span>
 
-      </div>
+            <span class="asset-account">
+              BTC
+            </span>
 
+          </div>
 
 
-      <!-- Nike -->
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="btc"
+          >
 
-      <div class="asset">
 
-        <div>
-
-          <span class="asset-name">
-            Nike
-          </span>
-
-          <span class="asset-account">
-            일반계좌 · NKE
-          </span>
-
-        </div>
-
-
-        <input
-          id="nike"
-          type="number"
-          value="0"
-          min="0"
-          step="10000"
-          oninput="updatePortfolio()"
-        >
-
-
-        <div
-          class="percentage"
-          id="nikePercent"
-        >
-          0.0%
-        </div>
-
-      </div>
-
-
-
-      <div class="buttons">
-
-
-        <button
-          class="save"
-          onclick="savePortfolio()"
-        >
-          저장
-        </button>
-
-
-        <button
-          class="reset"
-          onclick="resetPortfolio()"
-        >
-          0원으로 초기화
-        </button>
-
-
-      </div>
-
-
-    </section>
-
-
-
-    <!-- ======================
-         원형 그래프
-    ======================= -->
-
-    <section class="card chart-wrap">
-
-
-      <h2 class="section-title">
-        자산 비중
-      </h2>
-
-
-
-      <div class="donut-container">
-
-
-        <div
-          class="donut"
-          id="donut"
-        ></div>
-
-
-        <div
-          class="donut-symbol"
-          id="symbol-btc"
-        >
-          ₿
-        </div>
-
-
-        <div
-          class="donut-symbol"
-          id="symbol-sp500"
-        >
-          S&P
-        </div>
-
-
-        <div
-          class="donut-symbol"
-          id="symbol-nasdaq"
-        >
-          NQ
-        </div>
-
-
-        <div
-          class="donut-symbol"
-          id="symbol-schd"
-        >
-          SCHD
-        </div>
-
-
-        <div
-          class="donut-symbol"
-          id="symbol-nike"
-        >
-          NKE
-        </div>
-
-
-
-        <div class="chart-center">
-
-          <small>
-            총 자산
-          </small>
-
-          <strong id="chartTotal">
-            0원
-          </strong>
-
-        </div>
-
-
-      </div>
-
-
-
-      <div class="legend">
-
-
-        <div class="legend-row">
-
-          <span class="legend-name">
-
-            <span class="dot btc"></span>
-
-            Bitcoin
-
-          </span>
-
-          <span id="legendBtc">
+          <div
+            class="percentage"
+            data-percent="btc"
+          >
             0.0%
-          </span>
+          </div>
 
         </div>
 
 
 
-        <div class="legend-row">
+        <div
+          class="asset"
+          data-asset="sp500"
+        >
 
-          <span class="legend-name">
+          <div>
 
-            <span class="dot sp500"></span>
+            <span class="asset-name">
+              S&P 500
+            </span>
 
-            S&P 500
+            <span class="asset-account">
+              연금저축펀드
+            </span>
 
-          </span>
+          </div>
 
-          <span id="legendSp500">
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="sp500"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="sp500"
+          >
             0.0%
-          </span>
+          </div>
 
         </div>
 
 
 
-        <div class="legend-row">
+        <div
+          class="asset"
+          data-asset="nasdaq"
+        >
 
-          <span class="legend-name">
+          <div>
 
-            <span class="dot nasdaq"></span>
+            <span class="asset-name">
+              NASDAQ 100
+            </span>
 
-            NASDAQ 100
+            <span class="asset-account">
+              연금저축펀드
+            </span>
 
-          </span>
+          </div>
 
-          <span id="legendNasdaq">
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="nasdaq"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="nasdaq"
+          >
             0.0%
-          </span>
+          </div>
 
         </div>
 
 
 
-        <div class="legend-row">
+        <div
+          class="asset"
+          data-asset="schd"
+        >
 
-          <span class="legend-name">
+          <div>
 
-            <span class="dot schd"></span>
+            <span class="asset-name">
+              미국배당다우존스
+            </span>
 
-            미국배당다우존스
+            <span class="asset-account">
+              ISA
+            </span>
 
-          </span>
+          </div>
 
-          <span id="legendSchd">
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="schd"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="schd"
+          >
             0.0%
-          </span>
+          </div>
 
         </div>
 
 
 
-        <div class="legend-row">
+        <div
+          class="asset"
+          data-asset="nike"
+        >
 
-          <span class="legend-name">
+          <div>
 
-            <span class="dot nike"></span>
+            <span class="asset-name">
+              Nike
+            </span>
 
-            Nike
+            <span class="asset-account">
+              일반계좌 · NKE
+            </span>
 
-          </span>
+          </div>
 
-          <span id="legendNike">
+
+          <input
+            type="number"
+            min="0"
+            step="10000"
+            value="0"
+            data-input="nike"
+          >
+
+
+          <div
+            class="percentage"
+            data-percent="nike"
+          >
             0.0%
-          </span>
+          </div>
 
         </div>
 
 
-      </div>
+
+        <div class="buttons">
+
+          <button
+            class="save"
+            data-action="save"
+          >
+            저장
+          </button>
+
+          <button
+            class="reset"
+            data-action="reset"
+          >
+            0원으로 초기화
+          </button>
+
+        </div>
 
 
-    </section>
+      </section>
 
 
-  </div>
+
+      <!-- 현재 자산 그래프 -->
+
+      <section class="card chart-wrap">
+
+
+        <h3 class="section-title">
+          자산 비중
+        </h3>
+
+
+
+        <div class="donut-container">
+
+
+          <div class="donut"></div>
+
+
+          <div
+            class="donut-symbol btc-symbol"
+            data-symbol="btc"
+          >
+            ₿
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="sp500"
+          >
+            S&P
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="nasdaq"
+          >
+            NQ
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="schd"
+          >
+            SCHD
+          </div>
+
+
+          <div
+            class="donut-symbol"
+            data-symbol="nike"
+          >
+            NKE
+          </div>
+
+
+
+          <div class="chart-center">
+
+            <small>
+              총 자산
+            </small>
+
+            <strong class="chart-total">
+              0원
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="legend">
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot btc-dot"></span>
+
+              Bitcoin
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="btc"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot sp500-dot"></span>
+
+              S&P 500
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="sp500"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot nasdaq-dot"></span>
+
+              NASDAQ 100
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="nasdaq"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot schd-dot"></span>
+
+              미국배당다우존스
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="schd"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+
+          <div class="legend-row">
+
+            <span class="legend-name">
+
+              <span class="dot nike-dot"></span>
+
+              Nike
+
+            </span>
+
+            <span
+              class="legend-value"
+              data-legend="nike"
+            >
+              0.0%
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+      </section>
+
+
+    </div>
+
+
+  </section>
 
 
 
   <div class="notice">
 
-    입력한 자산 금액은
-    현재 브라우저에만 저장됩니다.
+    월 투자 계획과 현재 자산은
+    각각 현재 브라우저에 따로 저장됩니다.
 
   </div>
 
@@ -1041,13 +1565,53 @@
 <script>
 
 
-  const assetIds = [
+  const assetKeys = [
     "btc",
     "sp500",
     "nasdaq",
     "schd",
     "nike"
   ];
+
+
+  const assetNames = {
+
+    btc:
+      "Bitcoin",
+
+    sp500:
+      "S&P 500",
+
+    nasdaq:
+      "NASDAQ 100",
+
+    schd:
+      "미국배당다우존스",
+
+    nike:
+      "Nike"
+
+  };
+
+
+  const colors = {
+
+    btc:
+      "#f59e0b",
+
+    sp500:
+      "#3b82f6",
+
+    nasdaq:
+      "#8b5cf6",
+
+    schd:
+      "#10b981",
+
+    nike:
+      "#ef4444"
+
+  };
 
 
 
@@ -1061,520 +1625,535 @@
 
 
 
-  /* =========================
-     심볼 위치
-  ========================= */
-
-  function positionDonutSymbols(percentages) {
-
-
-    /*
-      250px 그래프 기준
-      링 가운데쯤에 배치
-    */
-
-    const radius = 100;
+  function setupPortfolio(
+    sectionId,
+    storageKey,
+    saveMessage
+  ) {
 
 
-    let startPercent = 0;
+    const root =
+      document.getElementById(
+        sectionId
+      );
 
 
-    assetIds.forEach(id => {
+    const inputs = {};
 
 
-      const percent =
-        percentages[id];
+    assetKeys.forEach(key => {
+
+      inputs[key] =
+        root.querySelector(
+          `[data-input="${key}"]`
+        );
+
+    });
 
 
-      const symbol =
-        document.getElementById(
-          "symbol-" + id
+
+    function getValues() {
+
+
+      const values = {};
+
+
+      assetKeys.forEach(key => {
+
+
+        values[key] =
+          Math.max(
+            0,
+            Number(
+              inputs[key].value
+            ) || 0
+          );
+
+      });
+
+
+      return values;
+
+    }
+
+
+
+    function positionSymbols(
+      percentages
+    ) {
+
+
+      const donutContainer =
+        root.querySelector(
+          ".donut-container"
         );
 
 
-      /*
-        비중 5% 미만은
-        공간이 좁아 심볼 숨김
-      */
+      const size =
+        donutContainer.offsetWidth;
 
-      if (percent < 5) {
+
+      const radius =
+        size * 0.40;
+
+
+      let startPercent = 0;
+
+
+      assetKeys.forEach(key => {
+
+
+        const percent =
+          percentages[key];
+
+
+        const symbol =
+          root.querySelector(
+            `[data-symbol="${key}"]`
+          );
+
+
+        if (
+          percent < 5
+        ) {
+
+          symbol.style.display =
+            "none";
+
+          startPercent +=
+            percent;
+
+          return;
+
+        }
+
+
+        const middlePercent =
+          startPercent
+          + percent / 2;
+
+
+        const angle =
+          (
+            middlePercent
+            / 100
+          )
+          * 360
+          - 90;
+
+
+        const radians =
+          angle
+          * Math.PI
+          / 180;
+
+
+        const x =
+          Math.cos(radians)
+          * radius;
+
+
+        const y =
+          Math.sin(radians)
+          * radius;
+
+
+        symbol.style.left =
+          `calc(50% + ${x}px)`;
+
+
+        symbol.style.top =
+          `calc(50% + ${y}px)`;
+
 
         symbol.style.display =
-          "none";
+          "flex";
+
 
         startPercent +=
           percent;
+
+      });
+
+    }
+
+
+
+    function update() {
+
+
+      const values =
+        getValues();
+
+
+      const total =
+        assetKeys.reduce(
+          (
+            sum,
+            key
+          ) =>
+          sum
+          + values[key],
+          0
+        );
+
+
+      const percentages = {};
+
+
+      assetKeys.forEach(key => {
+
+
+        percentages[key] =
+          total === 0
+          ? 0
+          : (
+              values[key]
+              / total
+            )
+            * 100;
+
+      });
+
+
+
+      root.querySelector(
+        ".total-display"
+      )
+      .textContent =
+        money(total);
+
+
+      root.querySelector(
+        ".chart-total"
+      )
+      .textContent =
+        money(total);
+
+
+
+      assetKeys.forEach(key => {
+
+
+        root.querySelector(
+          `[data-percent="${key}"]`
+        )
+        .textContent =
+          percentages[key]
+            .toFixed(1)
+          + "%";
+
+
+        root.querySelector(
+          `[data-legend="${key}"]`
+        )
+        .textContent =
+          percentages[key]
+            .toFixed(1)
+          + "%";
+
+      });
+
+
+
+      const donut =
+        root.querySelector(
+          ".donut"
+        );
+
+
+      if (
+        total === 0
+      ) {
+
+
+        donut.style.background =
+          "#e5e7eb";
+
+
+        root.querySelector(
+          ".largest-display"
+        )
+        .textContent =
+          "-";
+
+
+        assetKeys.forEach(
+          key => {
+
+            root.querySelector(
+              `[data-symbol="${key}"]`
+            )
+            .style.display =
+              "none";
+
+          }
+        );
+
 
         return;
 
       }
 
 
-      symbol.style.display =
-        "flex";
+
+      let running = 0;
+
+      const gradientParts = [];
 
 
-      const middlePercent =
-        startPercent
-        + percent / 2;
+      assetKeys.forEach(key => {
 
 
-      const angle =
-        (
-          middlePercent
-          / 100
-        )
-        * 360
-        - 90;
+        const start =
+          running;
 
 
-      const radians =
-        angle
-        * Math.PI
-        / 180;
+        const end =
+          running
+          + percentages[key];
 
 
-      const x =
-        Math.cos(radians)
-        * radius;
+        gradientParts.push(
 
+          `${colors[key]}
+          ${start}%
+          ${end}%`
 
-      const y =
-        Math.sin(radians)
-        * radius;
-
-
-      symbol.style.left =
-        `calc(50% + ${x}px)`;
-
-
-      symbol.style.top =
-        `calc(50% + ${y}px)`;
-
-
-      startPercent +=
-        percent;
-
-    });
-
-
-  }
-
-
-
-  /* =========================
-     전체 업데이트
-  ========================= */
-
-  function updatePortfolio() {
-
-
-    const values = {};
-
-
-    assetIds.forEach(id => {
-
-      values[id] =
-        Math.max(
-          0,
-          Number(
-            document
-              .getElementById(id)
-              .value
-          )
-          || 0
         );
 
-    });
 
-
-
-    const total =
-      values.btc
-      + values.sp500
-      + values.nasdaq
-      + values.schd
-      + values.nike;
-
-
-
-    const percentages = {};
-
-
-    assetIds.forEach(id => {
-
-
-      percentages[id] =
-        total === 0
-        ? 0
-        : (
-            values[id]
-            / total
-          )
-          * 100;
-
-    });
-
-
-
-    /* =========================
-       총 자산
-    ========================= */
-
-    document
-      .getElementById(
-        "totalAssets"
-      )
-      .textContent =
-      money(total);
-
-
-    document
-      .getElementById(
-        "chartTotal"
-      )
-      .textContent =
-      money(total);
-
-
-
-    /* =========================
-       비중 숫자
-    ========================= */
-
-    assetIds.forEach(id => {
-
-
-      document
-        .getElementById(
-          id + "Percent"
-        )
-        .textContent =
-        percentages[id]
-          .toFixed(1)
-        + "%";
-
-    });
-
-
-
-    document
-      .getElementById(
-        "legendBtc"
-      )
-      .textContent =
-      percentages.btc
-        .toFixed(1)
-      + "%";
-
-
-    document
-      .getElementById(
-        "legendSp500"
-      )
-      .textContent =
-      percentages.sp500
-        .toFixed(1)
-      + "%";
-
-
-    document
-      .getElementById(
-        "legendNasdaq"
-      )
-      .textContent =
-      percentages.nasdaq
-        .toFixed(1)
-      + "%";
-
-
-    document
-      .getElementById(
-        "legendSchd"
-      )
-      .textContent =
-      percentages.schd
-        .toFixed(1)
-      + "%";
-
-
-    document
-      .getElementById(
-        "legendNike"
-      )
-      .textContent =
-      percentages.nike
-        .toFixed(1)
-      + "%";
-
-
-
-    /* =========================
-       0원일 때
-    ========================= */
-
-    if (total === 0) {
-
-
-      document
-        .getElementById(
-          "donut"
-        )
-        .style.background =
-        "#e5e7eb";
-
-
-      document
-        .getElementById(
-          "largestAsset"
-        )
-        .textContent =
-        "-";
-
-
-      assetIds.forEach(id => {
-
-
-        document
-          .getElementById(
-            "symbol-" + id
-          )
-          .style.display =
-          "none";
+        running =
+          end;
 
       });
 
 
-      return;
 
-    }
+      donut.style.background =
+        `conic-gradient(
+          ${gradientParts.join(",")}
+        )`;
 
 
 
-    /* =========================
-       도넛 그래프
-    ========================= */
-
-    const btcEnd =
-      percentages.btc;
-
-
-    const sp500End =
-      btcEnd
-      + percentages.sp500;
-
-
-    const nasdaqEnd =
-      sp500End
-      + percentages.nasdaq;
-
-
-    const schdEnd =
-      nasdaqEnd
-      + percentages.schd;
-
-
-
-    document
-      .getElementById(
-        "donut"
-      )
-      .style.background =
-      `
-      conic-gradient(
-        #f59e0b 0% ${btcEnd}%,
-        #3b82f6 ${btcEnd}% ${sp500End}%,
-        #8b5cf6 ${sp500End}% ${nasdaqEnd}%,
-        #10b981 ${nasdaqEnd}% ${schdEnd}%,
-        #ef4444 ${schdEnd}% 100%
-      )
-      `;
-
-
-
-    positionDonutSymbols(
-      percentages
-    );
-
-
-
-    /* =========================
-       가장 높은 비중
-    ========================= */
-
-    const assetNames = {
-
-      btc:
-        "Bitcoin",
-
-      sp500:
-        "S&P 500",
-
-      nasdaq:
-        "NASDAQ 100",
-
-      schd:
-        "미국배당다우존스",
-
-      nike:
-        "Nike"
-
-    };
-
-
-    let largest =
-      assetIds[0];
-
-
-    assetIds.forEach(id => {
-
-
-      if (
-        percentages[id]
-        >
-        percentages[largest]
-      ) {
-
-        largest =
-          id;
-
-      }
-
-    });
-
-
-    document
-      .getElementById(
-        "largestAsset"
-      )
-      .textContent =
-      assetNames[largest]
-      + " "
-      + percentages[largest]
-          .toFixed(1)
-      + "%";
-
-  }
-
-
-
-  /* =========================
-     저장
-  ========================= */
-
-  function savePortfolio() {
-
-
-    const portfolio = {};
-
-
-    assetIds.forEach(id => {
-
-
-      portfolio[id] =
-        document
-          .getElementById(id)
-          .value;
-
-    });
-
-
-
-    localStorage.setItem(
-
-      "myInvestmentPortfolio",
-
-      JSON.stringify(
-        portfolio
-      )
-
-    );
-
-
-    alert(
-      "현재 자산 구성을 저장했습니다."
-    );
-
-  }
-
-
-
-  /* =========================
-     불러오기
-  ========================= */
-
-  function loadPortfolio() {
-
-
-    const saved =
-      localStorage.getItem(
-        "myInvestmentPortfolio"
+      positionSymbols(
+        percentages
       );
 
 
-    if (saved) {
+
+      let largest =
+        assetKeys[0];
 
 
-      const portfolio =
-        JSON.parse(saved);
-
-
-      assetIds.forEach(id => {
+      assetKeys.forEach(key => {
 
 
         if (
-          portfolio[id]
-          !== undefined
+          percentages[key]
+          >
+          percentages[largest]
         ) {
 
-          document
-            .getElementById(id)
-            .value =
-            portfolio[id];
+          largest =
+            key;
 
         }
 
       });
 
+
+
+      root.querySelector(
+        ".largest-display"
+      )
+      .textContent =
+        assetNames[largest]
+        + " "
+        + percentages[largest]
+            .toFixed(1)
+        + "%";
+
     }
 
 
-    updatePortfolio();
 
-  }
-
+    function save() {
 
 
-  /* =========================
-     0원 초기화
-  ========================= */
-
-  function resetPortfolio() {
+      const values =
+        getValues();
 
 
-    assetIds.forEach(id => {
+      localStorage.setItem(
+
+        storageKey,
+
+        JSON.stringify(
+          values
+        )
+
+      );
 
 
-      document
-        .getElementById(id)
-        .value =
-        0;
+      alert(
+        saveMessage
+      );
 
-    });
+    }
 
 
-    localStorage.removeItem(
-      "myInvestmentPortfolio"
+
+    function reset() {
+
+
+      assetKeys.forEach(
+        key => {
+
+          inputs[key].value =
+            0;
+
+        }
+      );
+
+
+      localStorage.removeItem(
+        storageKey
+      );
+
+
+      update();
+
+    }
+
+
+
+    function load() {
+
+
+      const saved =
+        localStorage.getItem(
+          storageKey
+        );
+
+
+      if (
+        saved
+      ) {
+
+
+        try {
+
+
+          const values =
+            JSON.parse(
+              saved
+            );
+
+
+          assetKeys.forEach(
+            key => {
+
+
+              if (
+                values[key]
+                !== undefined
+              ) {
+
+                inputs[key].value =
+                  values[key];
+
+              }
+
+            }
+          );
+
+
+        } catch (error) {
+
+          localStorage.removeItem(
+            storageKey
+          );
+
+        }
+
+      }
+
+
+      update();
+
+    }
+
+
+
+    assetKeys.forEach(
+      key => {
+
+
+        inputs[key]
+          .addEventListener(
+            "input",
+            update
+          );
+
+      }
     );
 
 
-    updatePortfolio();
+
+    root.querySelector(
+      '[data-action="save"]'
+    )
+    .addEventListener(
+      "click",
+      save
+    );
+
+
+
+    root.querySelector(
+      '[data-action="reset"]'
+    )
+    .addEventListener(
+      "click",
+      reset
+    );
+
+
+
+    window.addEventListener(
+      "resize",
+      update
+    );
+
+
+    load();
 
   }
 
 
 
-  loadPortfolio();
+  setupPortfolio(
+
+    "monthlyPortfolio",
+
+    "hmmmatoMonthlyPortfolioV2",
+
+    "월 투자 계획을 저장했습니다."
+
+  );
+
+
+  setupPortfolio(
+
+    "currentPortfolio",
+
+    "hmmmatoCurrentAssetsV2",
+
+    "현재 자산 구성을 저장했습니다."
+
+  );
 
 
 </script>
